@@ -1,4 +1,4 @@
-# He
+# //求两个数组中不是公共的元素
 additional
 ```
 #include <iostream>
