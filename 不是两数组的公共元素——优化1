@@ -1,0 +1,103 @@
+#优化后的代码,代码行数减少。从而代码体积缩小，运行时间减短。//
+```
+#include<iostream>
+using namespace std;
+int main()
+{
+	int a[100], b[100], c[100];
+	int u = 0;
+	int n, m;
+	cin >> n >> m;
+	for (int i = 0; i < n; ++i)
+	{
+		cin >> a[i];
+	}
+	for (int i = 0; i < m; ++i)
+	{
+		cin >> b[i];
+	}
+	int d[100];
+	int j = 0;
+	for (int i = 0; i < n; ++i)
+	{
+		int flag = 1;
+		for (int k = 0; k < m; ++k)
+		{
+			if (a[i] == b[k])
+			{
+				flag = 0;
+			}
+		}
+		if (flag == 1)
+		{
+			d[j] = a[i];
+			if (j == 0)
+			{
+				c[u] = a[i];
+				u++;
+				j++;
+			}
+			int flag1 = 1;
+			for (int r = 0; r < j; ++r)
+			{
+				if (a[i] == d[r])
+				{
+					flag1 = 0;
+					break;
+				}
+			}
+			if (flag1 == 1)
+			{
+				c[u] = a[i];
+				u++;
+			}
+			j++;
+		}
+	}
+	int e[100];
+	int q = 0;
+	for (int i = 0; i < m; ++i)
+	{
+		int flag = 1;
+		for (int k = 0; k < n; ++k)
+		{
+			if (b[i] == a[k])
+			{
+				flag = 0;
+				break;
+			}
+		}
+		if (flag == 1)
+		{
+			e[q] = b[i];
+			if (q == 0)
+			{
+				c[u] = b[i];
+				u++;
+				q++;
+			}
+			int flag1 = 1;
+			for (int r = 0; r < q; ++r)
+			{
+				if (b[i] == e[r])
+				{
+					flag1 = 0;
+					break;
+				}
+			}
+			if (flag1 == 1)
+			{
+				c[u] = b[i];
+				u++;
+			}
+			q++;
+		}
+	}
+	cout << "不是两个数组共有的元素有:" << endl;
+	for (int i = 0; i < u; ++i)
+	{
+		cout << c[i] << ' ';
+	}
+	return 0;
+}
+```
